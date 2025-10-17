@@ -11,8 +11,8 @@ describe('Home Page', () => {
       </BrowserRouter>
     );
 
-    expect(screen.getByText('Enterprise Technology')).toBeInTheDocument();
-    expect(screen.getByText('That Delivers Results')).toBeInTheDocument();
+    expect(screen.getByText('Next-Gen')).toBeInTheDocument();
+    expect(screen.getByText('Tech Solutions')).toBeInTheDocument();
   });
 
   it('renders all service cards', () => {
@@ -35,7 +35,7 @@ describe('Home Page', () => {
     );
 
     expect(screen.getByText('500+')).toBeInTheDocument();
-    expect(screen.getByText('Projects Delivered')).toBeInTheDocument();
+    expect(screen.getByText('Projects Completed')).toBeInTheDocument();
   });
 
   it('renders testimonials section', () => {
