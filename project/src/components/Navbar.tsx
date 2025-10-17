@@ -39,45 +39,48 @@ const Navbar: React.FC = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
+      role="navigation"
+      aria-label="Main navigation"
     >
       <div className="w-full px-4 sm:px-6 lg:px-10">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2">
-            <img src={logo} alt="Nexasai Solutions Logo" className="h-10 w-auto" />
+          <Link to="/" className="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 rounded">
+            <img src={logo} alt="Nexasai Solutions Logo" className="h-10 w-auto" width="40" height="40" />
             <span className={`text-xl font-bold ${isScrolled ? 'text-text-dark' : 'text-white'}`}>
               Nexasai Solutions
             </span>
           </Link>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`font-medium transition-colors duration-200 ${
+                className={`font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 rounded px-2 py-1 ${
                   location.pathname === item.path
                     ? 'text-primary-red'
                     : isScrolled
                     ? 'text-text-dark hover:text-primary-red'
                     : 'text-white hover:text-primary-orange'
                 }`}
+                aria-current={location.pathname === item.path ? 'page' : undefined}
               >
                 {item.name}
               </Link>
             ))}
             <Link
               to="/contact"
-              className="bg-primary-red text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-orange transition-colors duration-200"
+              className="bg-primary-red text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-orange transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
             >
               Get Started
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
-              className={`md:hidden ${isScrolled ? 'text-text-dark' : 'text-white'}`}
+              className={`md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 ${isScrolled ? 'text-text-dark' : 'text-white'}`}
               onClick={() => setIsOpen(!isOpen)}
+              aria-expanded={isOpen}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>

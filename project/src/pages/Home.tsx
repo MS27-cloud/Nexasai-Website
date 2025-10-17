@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Cloud, Users, Code, Star, CheckCircle, Zap } from 'lucide-react';
+import { SEOHead } from '../components/SEOHead';
 import cloudAutomationImg from '../assets/services/cloud-automation.jpg';
 import manpowerConsultingImg from "../assets/services/manpower-consulting.jpg";
 import webDevelopmentImg from "../assets/services/web-development.jpeg";
@@ -92,6 +92,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="overflow-hidden">
+      <SEOHead />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-red-900">
         {/* Animated Background Elements */}
@@ -217,6 +218,8 @@ const Home: React.FC = () => {
             alt={service.imageAlt || service.title}
             className="absolute inset-0 h-full w-full object-cover rounded-t-2xl transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
+            width="400"
+            height="225"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent" />
         </div>
