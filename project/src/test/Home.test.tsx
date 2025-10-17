@@ -11,8 +11,8 @@ describe('Home Page', () => {
       </BrowserRouter>
     );
 
-    expect(screen.getByText('Next-Gen')).toBeInTheDocument();
-    expect(screen.getByText('Tech Solutions')).toBeInTheDocument();
+    expect(screen.getByText('Enterprise Technology')).toBeInTheDocument();
+    expect(screen.getByText('That Delivers Results')).toBeInTheDocument();
   });
 
   it('renders all service cards', () => {
@@ -23,8 +23,8 @@ describe('Home Page', () => {
     );
 
     expect(screen.getByText('Cloud Automation')).toBeInTheDocument();
-    expect(screen.getByText('Manpower & Consulting')).toBeInTheDocument();
-    expect(screen.getByText('Web Development')).toBeInTheDocument();
+    expect(screen.getByText('Strategic Consulting')).toBeInTheDocument();
+    expect(screen.getByText('Custom Development')).toBeInTheDocument();
   });
 
   it('renders stats section', () => {
@@ -35,7 +35,7 @@ describe('Home Page', () => {
     );
 
     expect(screen.getByText('500+')).toBeInTheDocument();
-    expect(screen.getByText('Projects Completed')).toBeInTheDocument();
+    expect(screen.getByText('Projects')).toBeInTheDocument();
   });
 
   it('renders testimonials section', () => {
