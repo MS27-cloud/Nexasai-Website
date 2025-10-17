@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Cloud, Users, Code, Star, CheckCircle, Zap } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
+import TrustedBy from '../components/TrustedBy';
 import cloudAutomationImg from '../assets/services/cloud-automation.jpg';
 import manpowerConsultingImg from "../assets/services/manpower-consulting.jpg";
 import webDevelopmentImg from "../assets/services/web-development.jpeg";
@@ -95,79 +96,117 @@ const Home: React.FC = () => {
     <div className="overflow-hidden">
       <SEOHead />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-red-900">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080"
+            alt="Modern office workspace"
+            className="w-full h-full object-cover"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-900/90 to-blue-900/85"></div>
+        </div>
+
+        {/* Animated Accent Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
-            className="absolute -top-40 -right-40 w-80 h-80 bg-white bg-opacity-10 rounded-full"
+            className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500 rounded-full opacity-10 blur-3xl"
             animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, 180, 360],
+              scale: [1, 1.3, 1],
+              opacity: [0.1, 0.15, 0.1],
             }}
             transition={{
-              duration: 20,
+              duration: 8,
               repeat: Infinity,
-              ease: "linear"
+              ease: "easeInOut"
             }}
           />
           <motion.div
-            className="absolute -bottom-40 -left-40 w-96 h-96 bg-red-500 bg-opacity-20 rounded-full"
+            className="absolute -bottom-40 -left-40 w-96 h-96 bg-red-500 rounded-full opacity-10 blur-3xl"
             animate={{
-              scale: [1.2, 1, 1.2],
-              rotate: [360, 180, 0],
+              scale: [1.3, 1, 1.3],
+              opacity: [0.15, 0.1, 0.15],
             }}
             transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-          <motion.div
-            className="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-400 bg-opacity-15 rounded-full"
-            animate={{
-              y: [-20, 20, -20],
-              x: [-10, 10, -10],
-            }}
-            transition={{
-              duration: 6,
+              duration: 10,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Next-Gen
-              <span className="block bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">
-                Tech Solutions
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Empowering businesses with cutting-edge cloud automation, expert consulting,
-              and innovative web development solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/services"
-                className="inline-flex items-center px-8 py-4 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-all duration-200 transform hover:scale-105"
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {/* Trust Badge */}
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
               >
-                Explore Services
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-900 transition-all duration-200"
+                <div className="flex -space-x-2">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 border-2 border-white"></div>
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-red-400 to-red-600 border-2 border-white"></div>
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-green-400 to-green-600 border-2 border-white"></div>
+                </div>
+                <span className="text-sm font-medium text-white">Trusted by 150+ Enterprise Clients</span>
+              </motion.div>
+
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                Enterprise Technology
+                <span className="block mt-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                  That Delivers Results
+                </span>
+              </h1>
+
+              <p className="text-lg sm:text-xl md:text-2xl text-slate-200 mb-10 max-w-4xl mx-auto leading-relaxed">
+                Transform your business with cutting-edge cloud automation, strategic consulting,
+                and world-class web development trusted by Fortune 500 companies.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link
+                  to="/services"
+                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+                >
+                  Explore Our Services
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white hover:text-slate-900 transition-all duration-300 shadow-lg"
+                >
+                  Schedule a Consultation
+                </Link>
+              </div>
+
+              {/* Stats Bar */}
+              <motion.div
+                className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
               >
-                Get Started
-              </Link>
-            </div>
-          </motion.div>
+                {[
+                  { value: '500+', label: 'Projects Delivered' },
+                  { value: '150+', label: 'Enterprise Clients' },
+                  { value: '99.9%', label: 'Uptime SLA' },
+                  { value: '24/7', label: 'Support Available' }
+                ].map((stat, i) => (
+                  <div key={i} className="text-center">
+                    <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</div>
+                    <div className="text-sm text-slate-300">{stat.label}</div>
+                  </div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
@@ -176,11 +215,14 @@ const Home: React.FC = () => {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-white rounded-full mt-2"></div>
           </div>
         </motion.div>
       </section>
+
+      {/* Trusted By Section */}
+      <TrustedBy />
 
 {/* Services Section */}
 <section className="py-20 bg-gray-50">
@@ -265,28 +307,6 @@ const Home: React.FC = () => {
 </div>
 </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                className="text-center"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Why Choose Us Section */}
       <section className="py-20 bg-gray-900 text-white">

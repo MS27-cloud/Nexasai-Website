@@ -1,146 +1,184 @@
-import { Mail, Phone, MapPin, Linkedin, Github, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Twitter, ArrowRight, Building2, Users, Code, Cloud } from "lucide-react";
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-slate-900 text-slate-300">
+    <footer className="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 text-slate-300 border-t border-slate-800">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2">
-              {/* If you have a logo, replace src below */}
+        {/* Top Section with CTA */}
+        <div className="mb-16 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 p-8 md:p-12 text-center">
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Ready to Transform Your Business?
+          </h3>
+          <p className="text-xl text-blue-50 mb-6 max-w-2xl mx-auto">
+            Join 150+ enterprise clients who trust us to deliver exceptional technology solutions.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-slate-50 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
+          >
+            Start Your Project Today
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
+        </div>
+
+        {/* Main Footer Grid */}
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5 mb-12">
+          {/* Brand Column */}
+          <div className="lg:col-span-2">
+            <Link to="/" className="flex items-center gap-3 mb-4 group">
               <img
-                src="/logo.svg"
+                src={logo}
                 alt="Nexasai Solutions"
-                className="h-7 w-7"
+                className="h-10 w-10 group-hover:scale-110 transition-transform duration-300"
               />
-              <span className="text-lg font-semibold text-white">
+              <span className="text-xl font-bold text-white">
                 Nexasai Solutions
               </span>
-            </div>
-            <p className="mt-4 text-sm leading-6 text-slate-400">
-              Empowering businesses with cutting-edge technology solutions. From
-              cloud automation to web development, we drive innovation forward.
+            </Link>
+            <p className="text-sm leading-7 text-slate-400 mb-6 max-w-sm">
+              Enterprise technology partner delivering cutting-edge cloud automation, strategic consulting,
+              and world-class web development to Fortune 500 companies and innovative startups.
             </p>
-            <div className="mt-4 flex items-center gap-4">
+            <div className="flex items-center gap-4">
               <a
                 href="https://www.linkedin.com"
-                className="transition hover:text-white visited:text-slate-300"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center w-10 h-10 rounded-full bg-slate-800 hover:bg-blue-600 transition-all duration-300"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="h-5 w-5" />
+                <Linkedin className="h-5 w-5 text-slate-400 group-hover:text-white transition-colors" />
               </a>
               <a
                 href="https://twitter.com"
-                className="transition hover:text-white visited:text-slate-300"
-                aria-label="Twitter / X"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center w-10 h-10 rounded-full bg-slate-800 hover:bg-blue-400 transition-all duration-300"
+                aria-label="Twitter"
               >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="https://github.com"
-                className="transition hover:text-white visited:text-slate-300"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
+                <Twitter className="h-5 w-5 text-slate-400 group-hover:text-white transition-colors" />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Services Column */}
           <div>
-            <h3 className="text-base font-semibold text-white">Quick Links</h3>
-            <ul className="mt-4 space-y-3 text-sm">
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+              <Code className="h-4 w-4 text-blue-400" />
+              Services
+            </h3>
+            <ul className="space-y-3 text-sm">
               {[
-                ["About Us", "/about"],
-                ["Services", "/services"],
-                ["Careers", "/careers"],
-                ["Blog", "/blog"],
-              ].map(([label, href]) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    className="transition hover:text-white visited:text-slate-300 underline-offset-4 hover:underline"
+                { label: "Cloud Automation", href: "/services#cloud-automation", icon: Cloud },
+                { label: "Manpower & Consulting", href: "/services#manpower-consulting", icon: Users },
+                { label: "Web Development", href: "/services#web-development", icon: Code },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.href}
+                    className="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors duration-200"
                   >
-                    {label}
-                  </a>
+                    <ArrowRight className="h-3 w-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
+                    <span>{item.label}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Company Column */}
           <div>
-            <h3 className="text-base font-semibold text-white">Services</h3>
-            <ul className="mt-4 space-y-3 text-sm">
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+              <Building2 className="h-4 w-4 text-blue-400" />
+              Company
+            </h3>
+            <ul className="space-y-3 text-sm">
               {[
-                ["Cloud Automation", "/services/cloud-automation"],
-                ["Manpower & Consulting", "/services/consulting"],
-                ["Web Development", "/services/web-development"],
-              ].map(([label, href]) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    className="transition hover:text-white visited:text-slate-300 underline-offset-4 hover:underline"
+                { label: "About Us", href: "/about" },
+                { label: "Careers", href: "/careers" },
+                { label: "Blog", href: "/blog" },
+                { label: "Contact", href: "/contact" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.href}
+                    className="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors duration-200"
                   >
-                    {label}
-                  </a>
+                    <ArrowRight className="h-3 w-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
+                    <span>{item.label}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contact Column */}
           <div>
-            <h3 className="text-base font-semibold text-white">Contact Info</h3>
-            <ul className="mt-4 space-y-3 text-sm">
-              <li className="flex items-start gap-3">
-                <Mail className="mt-0.5 h-4 w-4 text-slate-400" />
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
+              Get In Touch
+            </h3>
+            <ul className="space-y-4 text-sm">
+              <li>
                 <a
                   href="mailto:contact@nexasai.com"
-                  className="transition hover:text-white visited:text-slate-300"
+                  className="group flex items-start gap-3 text-slate-400 hover:text-white transition-colors duration-200"
                 >
-                  contact@nexasai.com
+                  <Mail className="mt-0.5 h-5 w-5 text-blue-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                  <span className="break-all">contact@nexasai.com</span>
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <Phone className="mt-0.5 h-4 w-4 text-slate-400" />
+              <li>
                 <a
                   href="tel:+15551234567"
-                  className="transition hover:text-white visited:text-slate-300"
+                  className="group flex items-start gap-3 text-slate-400 hover:text-white transition-colors duration-200"
                 >
-                  +1 (555) 123-4567
+                  <Phone className="mt-0.5 h-5 w-5 text-blue-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                  <span>+1 (555) 123-4567</span>
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 text-slate-400" />
-                <span className="text-slate-400">
-                  123 Tech Street, Innovation City, IC 12345
-                </span>
+              <li>
+                <div className="flex items-start gap-3 text-slate-400">
+                  <MapPin className="mt-0.5 h-5 w-5 text-blue-400 flex-shrink-0" />
+                  <span>123 Tech Street<br />Innovation City, IC 12345</span>
+                </div>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Divider */}
-        <hr className="mt-12 border-slate-700/60" />
+        <div className="border-t border-slate-800"></div>
 
-        {/* Bottom bar */}
-        <div className="mt-6 flex flex-col items-center justify-between gap-3 text-xs text-slate-400 sm:flex-row">
-          <p>© {new Date().getFullYear()} Nexasai Solutions. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a
-              href="/privacy"
-              className="transition hover:text-white visited:text-slate-300 underline-offset-4 hover:underline"
+        {/* Bottom Section */}
+        <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+          <p className="text-slate-500">
+            © {currentYear} Nexasai Solutions. All rights reserved.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-6 text-slate-500">
+            <Link
+              to="/privacy"
+              className="hover:text-white transition-colors duration-200"
             >
               Privacy Policy
-            </a>
-            <a
-              href="/terms"
-              className="transition hover:text-white visited:text-slate-300 underline-offset-4 hover:underline"
+            </Link>
+            <span className="text-slate-700">•</span>
+            <Link
+              to="/terms"
+              className="hover:text-white transition-colors duration-200"
             >
               Terms of Service
-            </a>
+            </Link>
+            <span className="text-slate-700">•</span>
+            <Link
+              to="/sitemap"
+              className="hover:text-white transition-colors duration-200"
+            >
+              Sitemap
+            </Link>
           </div>
         </div>
       </div>
