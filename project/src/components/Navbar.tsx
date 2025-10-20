@@ -8,6 +8,9 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  // Normalize current path for GitHub Pages subpath by stripping Vite base
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+  const currentPath = (location.pathname || '/').replace(base || '', '') || '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,7 +69,7 @@ const Navbar: React.FC = () => {
                 key={item.name}
                 to={item.path}
                 className={`px-4 py-2 font-medium rounded-lg transition-all duration-300 ${
-                  location.pathname === item.path
+                  currentPath === item.path
                     ? isScrolled
                       ? 'text-red-600 bg-red-50'
                       : 'text-white bg-white/20'
@@ -74,7 +77,7 @@ const Navbar: React.FC = () => {
                     ? 'text-gray-700 hover:text-red-600 hover:bg-gray-50'
                     : 'text-white/90 hover:text-white hover:bg-white/10'
                 }`}
-                aria-current={location.pathname === item.path ? 'page' : undefined}
+                aria-current={currentPath === item.path ? 'page' : undefined}
               >
                 {item.name}
               </Link>
@@ -119,12 +122,12 @@ const Navbar: React.FC = () => {
                   key={item.name}
                   to={item.path}
                   className={`block px-4 py-3 font-medium rounded-lg transition-all duration-200 ${
-                    location.pathname === item.path
+                    currentPath === item.path
                       ? 'text-red-600 bg-red-50'
                       : 'text-gray-700 hover:text-red-600 hover:bg-gray-50'
                   }`}
                   onClick={() => setIsOpen(false)}
-                  aria-current={location.pathname === item.path ? 'page' : undefined}
+                  aria-current={currentPath === item.path ? 'page' : undefined}
                 >
                   {item.name}
                 </Link>

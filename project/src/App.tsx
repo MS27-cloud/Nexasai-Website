@@ -11,7 +11,7 @@ import Contact from "./pages/Contact";
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
         {/* Navbar always at the top */}
         <Navbar />
