@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Cloud, Users, Code, Star, CheckCircle, Zap } from 'lucide-react';
+import { SEOHead } from '../components/SEOHead';
 import cloudAutomationImg from '../assets/services/cloud-automation.jpg';
 import manpowerConsultingImg from "../assets/services/manpower-consulting.jpg";
 import webDevelopmentImg from "../assets/services/web-development.jpeg";
@@ -18,8 +19,8 @@ const Home: React.FC = () => {
       slug: 'cloud-automation',
       description: 'Transform your cloud into a secure, scalable platform that accelerates operations and fuels growth with confidence today.',
       color: 'from-blue-600 to-blue-700',
-      image: cloudAutomationImg,                 
-      imageAlt: 'Cloud automation in data center', 
+      image: cloudAutomationImg,
+      imageAlt: 'Cloud automation in data center',
       features: [
         'Auto-scaling infrastructure',
         'Cost optimization',
@@ -93,6 +94,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="overflow-hidden">
+      <SEOHead />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-red-900">
         {/* Animated Background Elements */}
@@ -148,7 +150,7 @@ const Home: React.FC = () => {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Empowering businesses with cutting-edge cloud automation, expert consulting, 
+              Empowering businesses with cutting-edge cloud automation, expert consulting,
               and innovative web development solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -200,7 +202,7 @@ const Home: React.FC = () => {
         We deliver comprehensive technology solutions that drive innovation and growth for businesses of all sizes.
       </p>
     </motion.div>
-    
+
 
    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
   {services.map((service, index) => (
@@ -220,6 +222,8 @@ const Home: React.FC = () => {
             alt={service.imageAlt || service.title}
             className="absolute inset-0 h-full w-full object-cover rounded-t-2xl transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
+            width="400"
+            height="225"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent" />
         </div>
@@ -250,7 +254,7 @@ const Home: React.FC = () => {
         {/* CTA pinned to bottom */}
         <div className="mt-auto pt-6">
           <Link
-            to={service.link}  // e.g. "/services#cloud-automation"
+            to={service.link}
             className="inline-flex items-center font-semibold text-red-600 hover:underline"
           >
             Learn More
@@ -301,7 +305,7 @@ const Home: React.FC = () => {
                 Why Choose Nexasai Solutions?
               </h2>
               <p className="text-xl text-gray-300 mb-8">
-                We combine technical expertise with business intelligence to deliver solutions 
+                We combine technical expertise with business intelligence to deliver solutions
                 that not only meet your current needs but scale with your future growth.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
