@@ -1,4 +1,4 @@
-import Marquee from "react-fast-marquee";
+import { motion } from "framer-motion";
 import cisco   from "../assets/logos/cisco.png";
 import netapp  from "../assets/logos/netapp.png";
 import oracle  from "../assets/logos/Oracle.png";
@@ -35,30 +35,23 @@ export default function TrustedBy() {
         </p>
       </div>
 
-      {/* Scrolling row */}
+      {/* Static logo row with subtle motion (no scrolling) */}
       <div className="mt-10">
-        {/* gradient={false} to avoid fade-in edges, speed tweaked for legibility */}
-        <Marquee gradient={false} speed={40}>
-          {logos.map((l) => (
-            <div
-              key={l.name}
-              className="
-                mx-10
-                flex items-center justify-center
-                w-[170px]  /* unified width per item */
-                h-12       /* unified height (48px) */
-              "
-            >
-              <img
+        <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-10">
+          {logos.map((l, i) => (
+            <div key={l.name} className="flex items-center justify-center h-12 w-[170px]">
+              <motion.img
                 src={l.src}
                 alt={l.name}
                 className="h-10 md:h-12 w-auto object-contain"
                 style={{ transform: `scale(${l.scale ?? 1})` }}
                 loading="lazy"
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.15 }}
               />
             </div>
           ))}
-        </Marquee>
+        </div>
       </div>
     </section>
   );

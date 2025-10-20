@@ -6,6 +6,7 @@ import { ArrowRight, Cloud, Users, Code, Star, CheckCircle, Zap } from 'lucide-r
 import cloudAutomationImg from '../assets/services/cloud-automation.jpg';
 import manpowerConsultingImg from "../assets/services/manpower-consulting.jpg";
 import webDevelopmentImg from "../assets/services/web-development.jpeg";
+import TrustedBy from "../components/TrustedBy";
 
 
 
@@ -180,6 +181,8 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
+      {/* Spacer after hero */}
+
 {/* Services Section */}
 <section className="py-20 bg-gray-50">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -349,6 +352,9 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Trusted By Section (above testimonials) */}
+      <TrustedBy />
 
       {/* Testimonials Section */}
       <section className="py-20 bg-gray-50">
