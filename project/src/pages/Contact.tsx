@@ -50,14 +50,14 @@ const Contact: React.FC = () => {
     {
       icon: Phone,
       title: 'Call Us',
-      details: '+1 (555) 123-4567',
+      details: '+1 (650) 483-3480',
       subDetails: 'Mon-Fri 9AM-6PM EST'
     },
     {
       icon: MapPin,
       title: 'Visit Us',
       details: '123 Tech Street',
-      subDetails: 'Innovation City, IC 12345'
+      subDetails: 'Union City, CA 12345'
     }
   ];
 

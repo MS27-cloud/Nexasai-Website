@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Linkedin, Github, Twitter } from "lucide-react";
+import logo from "../assets/logo.png";
 
 export default function Footer() {
   return (
@@ -8,11 +9,10 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2">
-              {/* If you have a logo, replace src below */}
               <img
-                src="/logo.svg"
-                alt="Nexasai Solutions"
-                className="h-7 w-7"
+                src={logo}
+                alt="Nexasai Solutions Logo"
+                className="h-7 w-auto"
               />
               <span className="text-lg font-semibold text-white">
                 Nexasai Solutions
@@ -106,16 +106,16 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="mt-0.5 h-4 w-4 text-slate-400" />
                 <a
-                  href="tel:+15551234567"
+                  href="tel:+16504833480"
                   className="transition hover:text-white visited:text-slate-300"
                 >
-                  +1 (555) 123-4567
+                  +1 (650) 483-3480
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 text-slate-400" />
                 <span className="text-slate-400">
-                  123 Tech Street, Innovation City, IC 12345
+                  123 Tech Street, Union City, CA 12345
                 </span>
               </li>
             </ul>

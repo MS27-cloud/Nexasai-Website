@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Target, Eye, Heart, Award, Users, Lightbulb } from "lucide-react";
-import TrustedBy from "../components/TrustedBy";
+// TrustedBy logos were moved to Home page
 
 const About: React.FC = () => {
   const values = [
@@ -102,7 +102,6 @@ const About: React.FC = () => {
       </section>
 
       {/* Company Snapshot + How We Work (replaces timeline) */}
-        <TrustedBy />
 
         {/* How We Work (keep this light, not dark) */}
         <section className="py-20 bg-white">

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+// Continuous rightward movement without a scrollbar or marquee library
 import cisco   from "../assets/logos/cisco.png";
 import netapp  from "../assets/logos/netapp.png";
 import oracle  from "../assets/logos/Oracle.png";
@@ -35,23 +35,30 @@ export default function TrustedBy() {
         </p>
       </div>
 
-      {/* Static logo row with subtle motion (no scrolling) */}
-      <div className="mt-10">
-        <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-10">
-          {logos.map((l, i) => (
-            <div key={l.name} className="flex items-center justify-center h-12 w-[170px]">
-              <motion.img
+      {/* Continuous rightward motion, uniform gaps, seamless loop */}
+      <div className="mt-10 overflow-hidden">
+        <div className="marquee-right flex items-center gap-x-20">
+          {[...logos, ...logos].map((l, idx) => (
+            <div key={`${l.name}-${idx}`} className="flex items-center justify-center h-12 w-[170px]">
+              <img
                 src={l.src}
-                alt={l.name}
-                className="h-10 md:h-12 w-auto object-contain"
+                alt={idx < logos.length ? l.name : ""}
+                className="h-10 md:h-12 w-auto max-w-full object-contain"
                 style={{ transform: `scale(${l.scale ?? 1})` }}
                 loading="lazy"
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.15 }}
               />
             </div>
           ))}
         </div>
+        <style>
+          {`
+            .marquee-right { width: max-content; animation: marqueeRight 24s linear infinite; }
+            @keyframes marqueeRight {
+              from { transform: translateX(-50%); }
+              to { transform: translateX(0%); }
+            }
+          `}
+        </style>
       </div>
     </section>
   );
