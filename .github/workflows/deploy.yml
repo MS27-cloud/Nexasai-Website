@@ -21,6 +21,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -35,6 +38,10 @@ jobs:
       - name: Build
         working-directory: project
         run: npm run build && npm run postbuild
+
+      - name: Inspect dist
+        run: |
+          ls -la project/dist || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -51,4 +58,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
